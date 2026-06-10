@@ -2,6 +2,7 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
 const requestForm = document.querySelector("[data-request-form]");
+const revealItems = document.querySelectorAll(".section-head, .service-card, .map-panel, .contact-copy, .request-form");
 
 if (navToggle && nav) {
   navToggle.addEventListener("click", () => {
@@ -52,4 +53,26 @@ if (requestForm) {
 
     window.location.href = `mailto:BeuthHeimatWerk@gmx.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
+}
+
+if (revealItems.length) {
+  revealItems.forEach((item) => item.classList.add("reveal"));
+
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  }
 }
