@@ -53,23 +53,3 @@ if (requestForm) {
     window.location.href = `mailto:BeuthHeimatWerk@gmx.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
-
-const animatedElements = document.querySelectorAll("[data-animate]");
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -30px" }
-  );
-
-  animatedElements.forEach((element) => observer.observe(element));
-} else {
-  animatedElements.forEach((element) => element.classList.add("is-visible"));
-}
