@@ -23,6 +23,7 @@
 
       <nav class="main-nav" id="main-nav" data-nav>
         <a href="#leistungen">Leistungen</a>
+        <a href="#gebiet">Einsatzgebiet</a>
         <a href="#anfrage">Anfrage</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
@@ -61,27 +62,83 @@
 
         <div class="service-list simple">
           <article class="service-card">
-            <span>01</span>
-            <h3>Hausmeisterservice & Objektbetreuung</h3>
+            <picture>
+              <source srcset="assets/real-hero.webp" type="image/webp">
+              <img src="assets/real-hero.jpg" alt="Gepflegtes Objekt">
+            </picture>
+            <div>
+              <span>01</span>
+              <h3>Hausmeisterservice & Objektbetreuung</h3>
+            </div>
           </article>
           <article class="service-card">
-            <span>02</span>
-            <h3>Regelmäßige Kontrollgänge & Objektpflege</h3>
+            <picture>
+              <source srcset="assets/real-lawn.webp" type="image/webp">
+              <img src="assets/real-lawn.jpg" alt="Objektpflege im Außenbereich">
+            </picture>
+            <div>
+              <span>02</span>
+              <h3>Regelmäßige Kontrollgänge & Objektpflege</h3>
+            </div>
           </article>
           <article class="service-card">
-            <span>03</span>
-            <h3>Reinigungsarbeiten</h3>
-            <p>Treppenhaus, Eingangsbereiche und Außenflächen.</p>
+            <picture>
+              <source srcset="assets/real-cleaning.webp" type="image/webp">
+              <img src="assets/real-cleaning.jpg" alt="Reinigungsarbeiten">
+            </picture>
+            <div>
+              <span>03</span>
+              <h3>Reinigungsarbeiten</h3>
+              <p>Treppenhaus, Eingangsbereiche und Außenflächen.</p>
+            </div>
           </article>
           <article class="service-card">
-            <span>04</span>
-            <h3>Ordnung & Sauberkeit im Objekt</h3>
+            <picture>
+              <source srcset="assets/real-garden.webp" type="image/webp">
+              <img src="assets/real-garden.jpg" alt="Ordnung und Sauberkeit im Objekt">
+            </picture>
+            <div>
+              <span>04</span>
+              <h3>Ordnung & Sauberkeit im Objekt</h3>
+            </div>
           </article>
           <article class="service-card wide">
-            <span>05</span>
-            <h3>Koordination externer Dienstleister</h3>
-            <p>Betreuung und Abstimmung mit weiteren Dienstleistern nach Bedarf.</p>
+            <picture>
+              <source srcset="assets/real-hero.webp" type="image/webp">
+              <img src="assets/real-hero.jpg" alt="Betreutes Objekt im Einsatzgebiet">
+            </picture>
+            <div>
+              <span>05</span>
+              <h3>Koordination externer Dienstleister</h3>
+              <p>Betreuung und Abstimmung mit weiteren Dienstleistern nach Bedarf.</p>
+            </div>
           </article>
+        </div>
+      </section>
+
+      <section class="section service-area" id="gebiet">
+        <div class="section-head">
+          <p class="section-kicker">Einsatzgebiet</p>
+          <h2>Regional im Einsatz rund um Wörth am Rhein.</h2>
+        </div>
+
+        <div class="map-panel" aria-label="Einsatzgebiet Wörth am Rhein, Hagenbach, Karlsruhe und Umgebung">
+          <div class="map-visual" aria-hidden="true">
+            <div class="map-river"></div>
+            <div class="map-road road-one"></div>
+            <div class="map-road road-two"></div>
+            <span class="map-pin main" style="--x: 38%; --y: 55%;">Wörth am Rhein</span>
+            <span class="map-pin" style="--x: 30%; --y: 38%;">Hagenbach</span>
+            <span class="map-pin" style="--x: 69%; --y: 43%;">Karlsruhe</span>
+            <span class="map-zone">Umgebung</span>
+          </div>
+
+          <div class="map-info">
+            <h3>Einsatzorte</h3>
+            <p>Wörth am Rhein, Hagenbach, Karlsruhe und Umgebung.</p>
+            <p>Für laufende Objektbetreuung oder einzelne Unterstützung können Sie Ihr Anliegen unverbindlich telefonisch besprechen.</p>
+            <a class="button primary translucent" href="tel:+491736967692">Jetzt anrufen</a>
+          </div>
         </div>
       </section>
 
@@ -102,12 +159,7 @@
             </a>
           </div>
 
-          <div class="area-list" aria-label="Einsatzgebiet">
-            <span>Wörth am Rhein</span>
-            <span>Hagenbach</span>
-            <span>Karlsruhe</span>
-            <span>Umgebung</span>
-          </div>
+          <a class="area-link" href="#gebiet">Einsatzgebiet ansehen</a>
         </div>
 
         <form class="request-form" data-request-form>
