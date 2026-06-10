@@ -171,15 +171,28 @@ img {
 }
 
 .hero {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1.05fr);
-  gap: clamp(28px, 5vw, 72px);
   align-items: center;
-  padding: clamp(42px, 7vw, 84px) clamp(16px, 6vw, 80px);
+  min-height: calc(100svh - 74px);
+  padding: clamp(64px, 9vw, 120px) clamp(16px, 6vw, 80px);
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .hero-content {
   max-width: 680px;
+  color: #fff;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(10, 42, 32, 0.88), rgba(10, 42, 32, 0.62) 42%, rgba(10, 42, 32, 0.18)),
+    linear-gradient(0deg, rgba(10, 42, 32, 0.18), rgba(10, 42, 32, 0.1));
 }
 
 .eyebrow,
@@ -214,6 +227,11 @@ h1 {
   line-height: 1;
 }
 
+.hero h1 {
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+}
+
 h2 {
   font-size: clamp(2rem, 4vw, 3.35rem);
   line-height: 1.04;
@@ -229,8 +247,9 @@ h3 {
 .hero-text {
   max-width: 620px;
   margin: 22px 0 0;
-  color: #425049;
+  color: rgba(255, 255, 255, 0.86);
   font-size: 1.13rem;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.26);
 }
 
 .hero-actions {
@@ -242,15 +261,17 @@ h3 {
 
 .hero-note {
   margin: 22px 0 0;
-  color: var(--green-900);
+  color: #fff;
   font-weight: 850;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.28);
 }
 
 .hero-media {
-  min-height: 470px;
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  min-height: 100%;
   overflow: hidden;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 
 .hero-media picture,
@@ -348,48 +369,29 @@ h3 {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background:
-    radial-gradient(circle at 38% 55%, rgba(47, 106, 67, 0.18), transparent 0 17%, rgba(47, 106, 67, 0.08) 18% 32%, transparent 33%),
-    linear-gradient(135deg, rgba(255, 253, 248, 0.94), rgba(233, 241, 235, 0.82));
+  background: #e8efe4;
   box-shadow: var(--shadow);
 }
 
 .map-visual::before {
   content: "";
   position: absolute;
-  inset: 24px;
-  border: 1px dashed rgba(13, 62, 46, 0.16);
-  border-radius: 50%;
+  inset: 0;
+  z-index: 1;
+  background: rgba(255, 253, 248, 0.18);
+  pointer-events: none;
 }
 
-.map-river {
-  position: absolute;
-  inset: -12% auto -18% 53%;
-  width: 90px;
-  border-radius: 999px;
-  background: rgba(99, 152, 174, 0.2);
-  transform: rotate(14deg);
+.map-visual picture,
+.map-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
 }
 
-.map-road {
-  position: absolute;
-  height: 2px;
-  background: rgba(181, 164, 133, 0.62);
-  transform-origin: left center;
-}
-
-.road-one {
-  left: 15%;
-  top: 62%;
-  width: 66%;
-  transform: rotate(-12deg);
-}
-
-.road-two {
-  left: 24%;
-  top: 28%;
-  width: 56%;
-  transform: rotate(21deg);
+.map-visual img {
+  object-fit: cover;
 }
 
 .map-pin {
@@ -397,6 +399,7 @@ h3 {
   left: var(--x);
   top: var(--y);
   transform: translate(-50%, -50%);
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -427,14 +430,16 @@ h3 {
   background: var(--sand);
 }
 
-.map-zone {
+.map-attribution {
   position: absolute;
-  right: 28px;
-  bottom: 24px;
-  color: rgba(13, 62, 46, 0.22);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.6rem, 8vw, 5.8rem);
-  font-weight: 800;
+  right: 10px;
+  bottom: 8px;
+  z-index: 2;
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #3f4b46;
+  font-size: 0.72rem;
 }
 
 .map-info {
@@ -691,7 +696,7 @@ h3 {
   }
 
   .hero-media {
-    min-height: 390px;
+    min-height: 100%;
   }
 
   .service-list.simple {
@@ -720,8 +725,7 @@ h3 {
   }
 
   .header-call {
-    min-height: 40px;
-    padding: 9px 13px;
+    display: none;
   }
 
   .main-nav {
@@ -729,7 +733,15 @@ h3 {
   }
 
   .hero {
-    padding-top: 32px;
+    min-height: calc(100svh - 68px);
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(0deg, rgba(10, 42, 32, 0.74), rgba(10, 42, 32, 0.56)),
+      linear-gradient(90deg, rgba(10, 42, 32, 0.72), rgba(10, 42, 32, 0.36));
   }
 
   h1 {
@@ -742,7 +754,7 @@ h3 {
   }
 
   .hero-media {
-    min-height: 280px;
+    min-height: 100%;
   }
 
   .service-list.simple,
@@ -768,20 +780,18 @@ h3 {
     padding: 8px 10px;
   }
 
-  .map-pin[style*="69%"] {
-    left: 64% !important;
-    top: 40% !important;
+  .map-pin.karlsruhe {
+    left: 62% !important;
+    top: 63% !important;
   }
 
-  .map-pin[style*="30%"] {
-    left: 27% !important;
-    top: 35% !important;
+  .map-pin.hagenbach {
+    left: 38% !important;
+    top: 59% !important;
   }
 
-  .map-zone {
-    right: 16px;
-    bottom: 14px;
-    font-size: 2.7rem;
+  .map-attribution {
+    font-size: 0.62rem;
   }
 
   .site-footer {
